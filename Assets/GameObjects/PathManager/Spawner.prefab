@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3562059953405867173}
   - component: {fileID: 135608335896618360}
   - component: {fileID: 7480012974922865643}
+  - component: {fileID: -7674989600088579945}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,3 +95,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-7674989600088579945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677722795040654945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e40b403318091146b010099ffa4e761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 2428817151320970116, guid: 9940cc2085099d240bec5cb58354e050, type: 3}
+  trailMaker: {fileID: 8020937117797132411, guid: 424e963ce0733a349b9980fbd3fcb563,
+    type: 3}
+  spawner: {fileID: 384353626068394068}

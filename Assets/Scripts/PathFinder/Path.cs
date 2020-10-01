@@ -14,6 +14,8 @@ namespace EnemyPathFinder
     public class Path : MonoBehaviour
     {
         public Waypoint[] wayPoints;
+        public GameObject trailMaker;
+        public Spawner spawner;
 
         /// <summary>
         /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen.
@@ -22,10 +24,14 @@ namespace EnemyPathFinder
         public void Awake()
         {
             wayPoints = GameObject.Find("Waypoints").GetComponentsInChildren<Waypoint>();
-
+            spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponentInChildren<Spawner>();
+            
             foreach (Waypoint wayPoints in wayPoints){
                 Debug.Log(wayPoints.gameObject.name);
             }
+
+            Instantiate(trailMaker, new Vector3(spawner.transform.position.x,spawner.transform.position.y + trailMaker.transform.localScale.y / 2, spawner.transform.position.z), Quaternion.identity);
+
         }
 
         public Waypoint GetNextWaypoint(Waypoint currentWaypoint)

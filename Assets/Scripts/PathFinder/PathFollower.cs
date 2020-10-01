@@ -11,16 +11,16 @@ namespace EnemyPathFinder
     /// </summary>
     public class PathFollower : MonoBehaviour
     {
-        private Path _path;      
-        public Vector3 destination;
-        private Waypoint _currentDestination; 
+        protected Path _path;      
+        protected Vector3 destination;
+        protected Waypoint _currentDestination; 
         
-        private int _currentPosition = 0;
-        private float _speed = 1.5f;
+        protected int _currentPosition = 0;
+        protected float _speed = 1.5f;
  
        
 
-        void Awake() 
+        protected void Awake() 
         {
             _path = GameObject.FindObjectOfType<Path>();
             _currentDestination = _path.GetNextWaypoint(_currentDestination);
@@ -28,7 +28,7 @@ namespace EnemyPathFinder
             transform.LookAt(destination + new Vector3(0, transform.localScale.y / 2, 0 ));
         }
 
-        void Update()
+        private void Update()
         {   
             if (_path == null) return; 
             if (_path.wayPoints.Length == 0) return;
