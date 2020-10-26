@@ -15,7 +15,7 @@ namespace EnemyPathFinder
     {
         public Waypoint[] wayPoints;
         public GameObject trailMaker;
-        public Spawner spawner;
+        public Enemies.Spawner spawner;
 
         /// <summary>
         /// Deze functie returned het volgende waypoint waar naartoe kan worden bewogen.
@@ -24,14 +24,13 @@ namespace EnemyPathFinder
         public void Awake()
         {
             wayPoints = GameObject.Find("Waypoints").GetComponentsInChildren<Waypoint>();
-            spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponentInChildren<Spawner>();
-            
-            foreach (Waypoint wayPoints in wayPoints){
-                Debug.Log(wayPoints.gameObject.name);
-            }
+            spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponentInChildren<Enemies.Spawner>();
+            PathIndicator();
+        }
 
-            Instantiate(trailMaker, new Vector3(spawner.transform.position.x,spawner.transform.position.y + trailMaker.transform.localScale.y / 2, spawner.transform.position.z), Quaternion.identity);
-
+        public void PathIndicator() 
+        {
+             Instantiate(trailMaker, new Vector3(spawner.transform.position.x,spawner.transform.position.y + trailMaker.transform.localScale.y / 2, spawner.transform.position.z), Quaternion.identity);
         }
 
         public Waypoint GetNextWaypoint(Waypoint currentWaypoint)
@@ -54,11 +53,10 @@ namespace EnemyPathFinder
                             break;
                         }
                         return wayPoints[i + 1];
-                    }
-                    
+                    }  
                 }
             }
-            Debug.Log("We have not detected any Waypoints!");
+            Debug.Log("You have reached the end of the trail");
             return null;
         }
     }

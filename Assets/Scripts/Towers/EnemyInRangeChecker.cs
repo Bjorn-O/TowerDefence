@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Enemies;      
 
 namespace Towers
 {
@@ -9,25 +8,25 @@ namespace Towers
     {
         [SerializeField] private float _radius;
         [SerializeField] private LayerMask _layer;
-        public Enemy GetFirstEnemyInRange()
+        public Enemies.Enemy GetFirstEnemyInRange()
         {
             Collider[] cols = Physics.OverlapSphere(transform.position, _radius, _layer);
             if (cols.Length < 1)
                 return null;
 
-            return cols[0].GetComponent<Enemy>();
+            return cols[0].GetComponent<Enemies.Enemy>();
         }
 
-        public Enemy[] GetAllEnemiesInRange()
+        public Enemies.Enemy[] GetAllEnemiesInRange()
         {
             Collider[] cols = Physics.OverlapSphere(transform.position, _radius, _layer);
             if (cols.Length < 1)
                 return null;
 
-            List<Enemy> enemiesInRange = new List<Enemy>();
+            List<Enemies.Enemy> enemiesInRange = new List<Enemies.Enemy>();
             foreach (var col in cols)
             {
-                enemiesInRange.Add(col.GetComponent<Enemy>());
+                enemiesInRange.Add(col.GetComponent<Enemies.Enemy>());
             }
 
             return enemiesInRange.ToArray();
